@@ -1,0 +1,81 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolucionRendugel", "SolucionRendugel.csproj", "{8C7B5201-8CE0-44A5-B839-D49A148F51CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. ServicionDistribuidos", "2. ServicionDistribuidos", "{9E553D18-C4C1-4672-974A-D396AEC52B75}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Aplicacion", "3. Aplicacion", "{7CBF1C44-30B4-481E-A638-E83726CBA672}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Dominio", "4. Dominio", "{883AB0FD-C0F8-4A96-8E64-DB7025E025F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Datos", "5. Datos", "{E86BB124-C756-4AA7-9520-BEBC602C4764}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6. Transversal", "6. Transversal", "{0F8585AC-F958-4DBD-8C52-9DC75E59F672}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7. Reportes", "7. Reportes", "{F41D377F-442D-4B28-BB49-8DFB472F5295}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rendugel.Datos.Interface", "..\Rendugel.Datos.Interface\Rendugel.Datos.Interface.csproj", "{4D4C88F4-08C7-4D84-8C84-6B65BF22ED4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rendugel.Datos.Repositorio", "..\Rendugel.Datos.Repositorio\Rendugel.Datos.Repositorio.csproj", "{36F5583C-DB8B-46E1-B95A-A87390D49592}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rendugel.Dominio", "..\Rendugel.Dominio\Rendugel.Dominio.csproj", "{B3C72F4E-0C72-4AD3-8AAD-C2497B4F7937}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rendugel.Dominio.Entidades", "..\Rendugel.Dominio.Entidades\Rendugel.Dominio.Entidades.csproj", "{72605C52-7409-4304-9170-4995E3795423}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rendugel.Dominio.Interfaces", "..\Rendugel.Dominio.Interfaces\Rendugel.Dominio.Interfaces.csproj", "{DAD61FED-452F-46B7-AA90-C5614961A2C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rendugel.Datos.Modelo", "..\Rendugel.Datos.Modelo\Rendugel.Datos.Modelo.csproj", "{F9238EE3-18AF-4E52-A97F-D4511C1D1686}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C7B5201-8CE0-44A5-B839-D49A148F51CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C7B5201-8CE0-44A5-B839-D49A148F51CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C7B5201-8CE0-44A5-B839-D49A148F51CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C7B5201-8CE0-44A5-B839-D49A148F51CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D4C88F4-08C7-4D84-8C84-6B65BF22ED4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D4C88F4-08C7-4D84-8C84-6B65BF22ED4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D4C88F4-08C7-4D84-8C84-6B65BF22ED4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D4C88F4-08C7-4D84-8C84-6B65BF22ED4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36F5583C-DB8B-46E1-B95A-A87390D49592}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36F5583C-DB8B-46E1-B95A-A87390D49592}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36F5583C-DB8B-46E1-B95A-A87390D49592}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36F5583C-DB8B-46E1-B95A-A87390D49592}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3C72F4E-0C72-4AD3-8AAD-C2497B4F7937}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3C72F4E-0C72-4AD3-8AAD-C2497B4F7937}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3C72F4E-0C72-4AD3-8AAD-C2497B4F7937}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3C72F4E-0C72-4AD3-8AAD-C2497B4F7937}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72605C52-7409-4304-9170-4995E3795423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72605C52-7409-4304-9170-4995E3795423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72605C52-7409-4304-9170-4995E3795423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72605C52-7409-4304-9170-4995E3795423}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAD61FED-452F-46B7-AA90-C5614961A2C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAD61FED-452F-46B7-AA90-C5614961A2C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAD61FED-452F-46B7-AA90-C5614961A2C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAD61FED-452F-46B7-AA90-C5614961A2C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9238EE3-18AF-4E52-A97F-D4511C1D1686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9238EE3-18AF-4E52-A97F-D4511C1D1686}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9238EE3-18AF-4E52-A97F-D4511C1D1686}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9238EE3-18AF-4E52-A97F-D4511C1D1686}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4D4C88F4-08C7-4D84-8C84-6B65BF22ED4D} = {E86BB124-C756-4AA7-9520-BEBC602C4764}
+		{36F5583C-DB8B-46E1-B95A-A87390D49592} = {E86BB124-C756-4AA7-9520-BEBC602C4764}
+		{B3C72F4E-0C72-4AD3-8AAD-C2497B4F7937} = {883AB0FD-C0F8-4A96-8E64-DB7025E025F7}
+		{72605C52-7409-4304-9170-4995E3795423} = {883AB0FD-C0F8-4A96-8E64-DB7025E025F7}
+		{DAD61FED-452F-46B7-AA90-C5614961A2C3} = {883AB0FD-C0F8-4A96-8E64-DB7025E025F7}
+		{F9238EE3-18AF-4E52-A97F-D4511C1D1686} = {E86BB124-C756-4AA7-9520-BEBC602C4764}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6C1B663D-426C-49A7-9F85-018D381E8402}
+	EndGlobalSection
+EndGlobal
