@@ -41,8 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="IGeneralRepositorio.cs" />
+    <Compile Include="IGeneralUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rendugel.Dominio.Entidades\Rendugel.Dominio.Entidades.csproj">
+      <Project>{72605c52-7409-4304-9170-4995e3795423}</Project>
+      <Name>Rendugel.Dominio.Entidades</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

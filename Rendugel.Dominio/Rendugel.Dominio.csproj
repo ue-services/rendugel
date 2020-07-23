@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>b3c72f4e-0c72-4ad3-8aad-c2497b4f7937</ProjectGuid>
+    <ProjectGuid>{B3C72F4E-0C72-4AD3-8AAD-C2497B4F7937}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Rendugel.Dominio</RootNamespace>
@@ -31,24 +31,53 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\SolucionRendugel\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\SolucionRendugel\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="0. General\GeneralRepositorio.cs" />
+    <Compile Include="0. General\GeneralUnitOfWork.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="1. Registro\" />
+    <Folder Include="2. Consulta\" />
+    <Folder Include="3. Configuracion\" />
+    <Folder Include="4. Seguridad\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rendugel.Datos.Modelo\Rendugel.Datos.Modelo.csproj">
+      <Project>{f9238ee3-18af-4e52-a97f-d4511c1d1686}</Project>
+      <Name>Rendugel.Datos.Modelo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rendugel.Datos.Repositorio\Rendugel.Datos.Repositorio.csproj">
+      <Project>{36f5583c-db8b-46e1-b95a-a87390d49592}</Project>
+      <Name>Rendugel.Datos.Repositorio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rendugel.Dominio.Entidades\Rendugel.Dominio.Entidades.csproj">
+      <Project>{72605c52-7409-4304-9170-4995e3795423}</Project>
+      <Name>Rendugel.Dominio.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rendugel.Dominio.Interfaces\Rendugel.Dominio.Interfaces.csproj">
+      <Project>{dad61fed-452f-46b7-aa90-c5614961a2c3}</Project>
+      <Name>Rendugel.Dominio.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>
