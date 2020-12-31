@@ -11,7 +11,8 @@ namespace Rendugel.Dominio.Entidades.Modelo
         public int? IdUbigeo { get; set; }
         public int? IdDre { get; set; }
         public bool? EsUeAutonoma { get; set; }
-        public int? IdIgedRegistro { get; set; }
+        public int? IdUnidadEjecutora { get; set; }
+        public int? IdRegistro { get; set; }
         public string UsuCreacion { get; set; }
         public DateTime? FechaCreacion { get; set; }
         public string UsuActualizacion { get; set; }
@@ -22,5 +23,6 @@ namespace Rendugel.Dominio.Entidades.Modelo
         public virtual Iged IdDreNavigation { get; set; }
         public virtual Iged IdIgedNavigation { get; set; }
         public virtual Ubigeo IdUbigeoNavigation { get; set; }
+        public virtual UnidadEjecutora IdUnidadEjecutoraNavigation { get; set; }
     }
 }

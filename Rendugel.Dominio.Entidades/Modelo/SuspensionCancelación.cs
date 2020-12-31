@@ -13,6 +13,7 @@ namespace Rendugel.Dominio.Entidades.Modelo
         public int IdSuspCanc { get; set; }
         public int IdRegistro { get; set; }
         public int? IdOrigenSuspCanc { get; set; }
+        public int? IdTipoSuspCanc { get; set; }
         public DateTime? FechaSuspension { get; set; }
         public string MotivoSuspension { get; set; }
         public string UsuCreacion { get; set; }
@@ -24,6 +25,7 @@ namespace Rendugel.Dominio.Entidades.Modelo
 
         public virtual OrigenSuspencionCancelacion IdOrigenSuspCancNavigation { get; set; }
         public virtual Registro IdRegistroNavigation { get; set; }
+        public virtual TipoSuspensionCancelacion IdTipoSuspCancNavigation { get; set; }
         public virtual ICollection<DocumentoSuspension> DocumentoSuspension { get; set; }
     }
 }

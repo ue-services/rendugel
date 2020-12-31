@@ -7,6 +7,7 @@ namespace Rendugel.Dominio.Entidades.Modelo
     {
         public TipoRegistro()
         {
+            EventoXTipoIged = new HashSet<EventoXTipoIged>();
             Registro = new HashSet<Registro>();
         }
 
@@ -16,6 +17,7 @@ namespace Rendugel.Dominio.Entidades.Modelo
         public bool? EsActivo { get; set; }
         public bool? EsBorrado { get; set; }
 
+        public virtual ICollection<EventoXTipoIged> EventoXTipoIged { get; set; }
         public virtual ICollection<Registro> Registro { get; set; }
     }
 }

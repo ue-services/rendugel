@@ -1,0 +1,36 @@
+﻿1>------ Operación Recompilar todo iniciada: proyecto: Rendugel.Dominio.Entidades, configuración: Debug Any CPU ------
+2>------ Operación Recompilar todo iniciada: proyecto: Rendugel.Comun.Recursos, configuración: Debug Any CPU ------
+2>  Rendugel.Comun.Recursos -> C:\Users\anica\source\repos\ProyectoRendugel\SolucionRendugel\Rendugel.Comun.Recursos\bin\Debug\Rendugel.Comun.Recursos.dll
+1>  Rendugel.Dominio.Entidades -> C:\Users\anica\source\repos\ProyectoRendugel\Rendugel.Dominio.Entidades\bin\Debug\Rendugel.Dominio.Entidades.dll
+3>------ Operación Recompilar todo iniciada: proyecto: Rendugel.Transversal.Entidades, configuración: Debug Any CPU ------
+4>------ Operación Recompilar todo iniciada: proyecto: Rendugel.Datos.Modelo, configuración: Debug Any CPU ------
+3>  Rendugel.Transversal.Entidades -> C:\Users\anica\source\repos\ProyectoRendugel\SolucionRendugel\Rendugel.Transversal.Entidades\bin\Debug\Rendugel.Transversal.Entidades.dll
+5>------ Operación Recompilar todo iniciada: proyecto: Rendugel.Datos.Interface, configuración: Debug Any CPU ------
+6>------ Operación Recompilar todo iniciada: proyecto: Rendugel.Dominio.Interfaces, configuración: Debug Any CPU ------
+7>------ Operación Recompilar todo iniciada: proyecto: Rendugel.Aplicacion.Interfaces, configuración: Debug Any CPU ------
+8>------ Operación Recompilar todo iniciada: proyecto: Rendugel.Servicios.Contratos, configuración: Debug Any CPU ------
+5>  Rendugel.Datos.Interface -> C:\Users\anica\source\repos\ProyectoRendugel\Rendugel.Datos.Interface\bin\Debug\Rendugel.Datos.Interface.dll
+7>  Rendugel.Aplicacion.Interfaces -> C:\Users\anica\source\repos\ProyectoRendugel\SolucionRendugel\Rendugel.Aplicacion.Interfaces\bin\Debug\Rendugel.Aplicacion.Interfaces.dll
+6>  Rendugel.Dominio.Interfaces -> C:\Users\anica\source\repos\ProyectoRendugel\Rendugel.Dominio.Interfaces\bin\Debug\Rendugel.Dominio.Interfaces.dll
+4>C:\Users\anica\source\repos\ProyectoRendugel\Rendugel.Datos.Modelo\rendugelDBContext.cs(72,10,72,214): warning CS1030: #advertencia: 'To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.'
+4>  Rendugel.Datos.Modelo -> C:\Users\anica\source\repos\ProyectoRendugel\Rendugel.Datos.Modelo\bin\Rendugel.Datos.Modelo.dll
+9>------ Operación Recompilar todo iniciada: proyecto: Rendugel.Datos.Repositorio, configuración: Debug Any CPU ------
+9>  Rendugel.Datos.Repositorio -> C:\Users\anica\source\repos\ProyectoRendugel\Rendugel.Datos.Repositorio\bin\Debug\Rendugel.Datos.Repositorio.dll
+10>------ Operación Recompilar todo iniciada: proyecto: Rendugel.Dominio, configuración: Debug Any CPU ------
+11>------ Operación Recompilar todo iniciada: proyecto: Rendugel.Aplicacion.Registro, configuración: Debug Any CPU ------
+12>------ Operación Recompilar todo iniciada: proyecto: Rendugel.Dominio.UnitTest, configuración: Debug Any CPU ------
+11>  Rendugel.Aplicacion.Registro -> C:\Users\anica\source\repos\ProyectoRendugel\SolucionRendugel\Rendugel.Aplicacion.Registro\bin\Debug\Rendugel.Aplicacion.Registro.dll
+13>------ Operación Recompilar todo iniciada: proyecto: Rendugel.Servicios.Servicio, configuración: Debug Any CPU ------
+14>------ Operación Recompilar todo iniciada: proyecto: Rendugel.Aplicacion.UnitTest2, configuración: Debug Any CPU ------
+13>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2084,5): warning MSB3277: Se encontraron conflictos entre diferentes versiones de "System.Memory" que no se pudieron resolver. Estos conflictos de referencia se enumeran en el registro de compilación si su nivel de detalle está establecido como detallado.
+13>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2084,5): warning MSB3277: Se encontraron conflictos entre diferentes versiones de "System.Net.Http.Formatting" que no se pudieron resolver. Estos conflictos de referencia se enumeran en el registro de compilación si su nivel de detalle está establecido como detallado.
+13>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2084,5): warning MSB3277: Se encontraron conflictos entre diferentes versiones de "System.Numerics.Vectors" que no se pudieron resolver. Estos conflictos de referencia se enumeran en el registro de compilación si su nivel de detalle está establecido como detallado.
+14>  Rendugel.Aplicacion.UnitTest2 -> C:\Users\anica\source\repos\ProyectoRendugel\SolucionRendugel\Rendugel.Aplicacion.UnitTest2\bin\Debug\Rendugel.Aplicacion.UnitTest2.dll
+13>C:\Users\anica\source\repos\ProyectoRendugel\SolucionRendugel\Rendugel.Servicios.Servicio\Registro\WorkStreamServicio.cs(173,38,173,39): warning CS0168: La variable 'e' se ha declarado pero nunca se usa
+13>  Rendugel.Servicios.Servicio -> C:\Users\anica\source\repos\ProyectoRendugel\SolucionRendugel\Rendugel.Servicios.Servicio\bin\Debug\Rendugel.Servicios.Servicio.dll
+15>------ Operación Recompilar todo iniciada: proyecto: Rendugel.Servicios.Host, configuración: Debug Any CPU ------
+15>C:\Users\anica\source\repos\ProyectoRendugel\SolucionRendugel\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets(225,5): warning : All projects referencing Rendugel.Servicios.Servicio.csproj must install nuget package Microsoft.Bcl.Build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317569.
+15>  Rendugel.Servicios.Host -> C:\Users\anica\source\repos\ProyectoRendugel\SolucionRendugel\Rendugel.Servicios.Host\bin\Rendugel.Servicios.Host.dll
+16>------ Operación Recompilar todo iniciada: proyecto: Rendugel.Servicios.UnitTest, configuración: Debug Any CPU ------
+16>  Rendugel.Servicios.UnitTest -> C:\Users\anica\source\repos\ProyectoRendugel\SolucionRendugel\Rendugel.Servicios.UnitTest\bin\Debug\Rendugel.Servicios.UnitTest.dll
+========== Recompilar todo: 16 correctos, 0 incorrectos, 0 omitidos ==========

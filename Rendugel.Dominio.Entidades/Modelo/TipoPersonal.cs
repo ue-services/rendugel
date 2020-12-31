@@ -10,7 +10,7 @@ namespace Rendugel.Dominio.Entidades.Modelo
             Personal = new HashSet<Personal>();
         }
 
-        public int IdTipoPersoanal { get; set; }
+        public int IdTipoPersonal { get; set; }
         public int? CodTipoPersonal { get; set; }
         public string DescTipoPersonal { get; set; }
         public bool? EsActivo { get; set; }

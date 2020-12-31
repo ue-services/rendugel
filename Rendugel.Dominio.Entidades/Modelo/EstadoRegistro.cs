@@ -7,6 +7,7 @@ namespace Rendugel.Dominio.Entidades.Modelo
     {
         public EstadoRegistro()
         {
+            BandejaEstadoRegistro = new HashSet<BandejaEstadoRegistro>();
             Configuracion = new HashSet<Configuracion>();
             Registro = new HashSet<Registro>();
         }
@@ -17,6 +18,7 @@ namespace Rendugel.Dominio.Entidades.Modelo
         public bool? EsActivo { get; set; }
         public bool? EsBorrado { get; set; }
 
+        public virtual ICollection<BandejaEstadoRegistro> BandejaEstadoRegistro { get; set; }
         public virtual ICollection<Configuracion> Configuracion { get; set; }
         public virtual ICollection<Registro> Registro { get; set; }
     }

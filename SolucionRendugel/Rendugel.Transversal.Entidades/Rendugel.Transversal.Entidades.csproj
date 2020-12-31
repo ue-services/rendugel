@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{98028EA7-9FF1-47BA-A80C-F3F6E21A6096}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Rendugel.Transversal.Entidades</RootNamespace>
+    <AssemblyName>Rendugel.Transversal.Entidades</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Data.SqlClient, Version=2.0.20168.4, Culture=neutral, PublicKeyToken=23ec7fc2d6eaa4a5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.SqlClient.2.0.1\lib\net46\Microsoft.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client, Version=4.14.0.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.4.14.0\lib\net45\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.6.0\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.6.0\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.5.6.0\lib\net461\Microsoft.IdentityModel.Protocols.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.5.6.0\lib\net461\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.6.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.6.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Serialization.Formatters.4.3.0\lib\net46\System.Runtime.Serialization.Formatters.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Primitives, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Serialization.Primitives.4.3.0\lib\net46\System.Runtime.Serialization.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Xml, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Serialization.Xml.4.3.0\lib\net46\System.Runtime.Serialization.Xml.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Entidades\EAcciones.cs" />
+    <Compile Include="Entidades\EBandeja.cs" />
+    <Compile Include="Entidades\EClasificacionDocumento.cs" />
+    <Compile Include="Entidades\ECentroPoblado.cs" />
+    <Compile Include="Entidades\EDistrito.cs" />
+    <Compile Include="Entidades\EDocumento.cs" />
+    <Compile Include="Entidades\EDocumentoTem.cs" />
+    <Compile Include="Entidades\EEstadoIged.cs" />
+    <Compile Include="Entidades\EEstadoRegistro.cs" />
+    <Compile Include="Entidades\EEventoRegistral.cs" />
+    <Compile Include="Entidades\EIged.cs" />
+    <Compile Include="Entidades\EIgedMedioContacto.cs" />
+    <Compile Include="Entidades\EIgedRegistroDefinitivoDetalle.cs" />
+    <Compile Include="Entidades\EIgedRegistroDetalle.cs" />
+    <Compile Include="Entidades\EJurisdiccion.cs" />
+    <Compile Include="Entidades\ELocalIged.cs" />
+    <Compile Include="Entidades\EMedioContacto.cs" />
+    <Compile Include="Entidades\ENaturaleza.cs" />
+    <Compile Include="Entidades\EOpcionesJurisdiccionPertenencia.cs" />
+    <Compile Include="Entidades\EOpcionesJurisdiccionInvolucradas.cs" />
+    <Compile Include="Entidades\EOpcionesRegistro.cs" />
+    <Compile Include="Entidades\EOpcionesUbigeo.cs" />
+    <Compile Include="Entidades\EOrigenSuspencionCancelacion.cs" />
+    <Compile Include="Entidades\EPersona.cs" />
+    <Compile Include="Entidades\EPersonal.cs" />
+    <Compile Include="Entidades\EPersonalExtend.cs" />
+    <Compile Include="Entidades\EPersonalMedioContacto.cs" />
+    <Compile Include="Entidades\EPersonalMedioContactoB.cs" />
+    <Compile Include="Entidades\EPliegoUnidadEjecutora.cs" />
+    <Compile Include="Entidades\EProvincia.cs" />
+    <Compile Include="Entidades\ERegion.cs" />
+    <Compile Include="Entidades\ERegistro.cs" />
+    <Compile Include="Entidades\ERegistroBandeja.cs" />
+    <Compile Include="Entidades\ERegistroDefinitivo.cs" />
+    <Compile Include="Entidades\ERutaArchivos.cs" />
+    <Compile Include="Entidades\ESuspencionCancelacion.cs" />
+    <Compile Include="Entidades\ETerminoCantidadJurisdiccion.cs" />
+    <Compile Include="Entidades\ETipoDocumento.cs" />
+    <Compile Include="Entidades\ETipoFuncionDocumento.cs" />
+    <Compile Include="Entidades\ETipoIged.cs" />
+    <Compile Include="Entidades\ETipoLocal.cs" />
+    <Compile Include="Entidades\ETipoMedioContacto.cs" />
+    <Compile Include="Entidades\ETipoPersonal.cs" />
+    <Compile Include="Entidades\ETipoPropiedad.cs" />
+    <Compile Include="Entidades\ETipoRegistro.cs" />
+    <Compile Include="Entidades\ETipoSuspensionCancelacion.cs" />
+    <Compile Include="Entidades\ETipoUbigeo.cs" />
+    <Compile Include="Entidades\EUbigeo.cs" />
+    <Compile Include="Entidades\EUbigeo_.cs" />
+    <Compile Include="Entidades\EUgel.cs" />
+    <Compile Include="Entidades\ETerminoPertenenciaJurisdiccion.cs" />
+    <Compile Include="Entidades\EUgelCompleta.cs" />
+    <Compile Include="Entidades\EUnidadEjecutora.cs" />
+    <Compile Include="Entidades\EIgedRegistroDefinitivoDetalle_.cs" />
+    <Compile Include="Entidades\EUser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entidades\EConfiguracion.cs" />
+    <Compile Include="Request\EModificacionSignificativaRequest.cs" />
+    <Compile Include="Request\EOpcionesBandejaRequest.cs" />
+    <Compile Include="Request\EOpcionesRequest.cs" />
+    <Compile Include="Request\EParametrosRegistroRequest.cs" />
+    <Compile Include="Request\EPertenenciaRequest.cs" />
+    <Compile Include="Request\ERegistroProvisionalRequest.cs" />
+    <Compile Include="Request\ERegistroSuspensionRequest.cs" />
+    <Compile Include="Response\IgedJurisdiccionResponse.cs" />
+    <Compile Include="Response\ListasComponentesResponse.cs" />
+    <Compile Include="Response\ListasComponentesSuspensionResponse.cs" />
+    <Compile Include="Response\RegistroDefinitivoResponse.cs" />
+    <Compile Include="Response\RegistroProvisionalResponse.cs" />
+    <Compile Include="Response\RegistroResponse.cs" />
+    <Compile Include="Response\RegistrosProvisionalesResponse.cs" />
+    <Compile Include="Response\ResponseService.cs" />
+    <Compile Include="Response\UploadTempResponse.cs" />
+    <Compile Include="Response\ValidacionResponse.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Rendugel.Dominio.Entidades\Rendugel.Dominio.Entidades.csproj">
+      <Project>{72605C52-7409-4304-9170-4995E3795423}</Project>
+      <Name>Rendugel.Dominio.Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.2.0.1\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.2.0.1\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Data.SqlClient.SNI.2.0.1\build\net46\Microsoft.Data.SqlClient.SNI.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Data.SqlClient.SNI.2.0.1\build\net46\Microsoft.Data.SqlClient.SNI.targets'))" />
+  </Target>
+</Project>

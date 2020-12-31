@@ -11,10 +11,10 @@ namespace Rendugel.Dominio.Entidades.Modelo
             HIged = new HashSet<HIged>();
             IgedBasicosIdDreNavigation = new HashSet<IgedBasicos>();
             IgedBasicosIdIgedNavigation = new HashSet<IgedBasicos>();
+            IgedMedioContacto = new HashSet<IgedMedioContacto>();
             IgedRegistroDetalle = new HashSet<IgedRegistroDetalle>();
-            IgelMedioContacto = new HashSet<IgelMedioContacto>();
             JurisdiccionIged = new HashSet<JurisdiccionIged>();
-            LocalIgel = new HashSet<LocalIgel>();
+            LocalIged = new HashSet<LocalIged>();
             Personal = new HashSet<Personal>();
         }
 
@@ -35,10 +35,10 @@ namespace Rendugel.Dominio.Entidades.Modelo
         public virtual ICollection<HIged> HIged { get; set; }
         public virtual ICollection<IgedBasicos> IgedBasicosIdDreNavigation { get; set; }
         public virtual ICollection<IgedBasicos> IgedBasicosIdIgedNavigation { get; set; }
+        public virtual ICollection<IgedMedioContacto> IgedMedioContacto { get; set; }
         public virtual ICollection<IgedRegistroDetalle> IgedRegistroDetalle { get; set; }
-        public virtual ICollection<IgelMedioContacto> IgelMedioContacto { get; set; }
         public virtual ICollection<JurisdiccionIged> JurisdiccionIged { get; set; }
-        public virtual ICollection<LocalIgel> LocalIgel { get; set; }
+        public virtual ICollection<LocalIged> LocalIged { get; set; }
         public virtual ICollection<Personal> Personal { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Rendugel.Dominio.Entidades.Modelo;
+using Rendugel.Transversal.Entidades;
 using System.Collections.Generic;
 
 namespace Rendugel.Datos.Interfaces

@@ -7,7 +7,7 @@ namespace Rendugel.Dominio.Entidades.Modelo
     {
         public TipoLocal()
         {
-            LocalIgel = new HashSet<LocalIgel>();
+            LocalIged = new HashSet<LocalIged>();
         }
 
         public int IdTipoLocal { get; set; }
@@ -17,6 +17,6 @@ namespace Rendugel.Dominio.Entidades.Modelo
         public bool? EsActivo { get; set; }
         public bool? EsBorrado { get; set; }
 
-        public virtual ICollection<LocalIgel> LocalIgel { get; set; }
+        public virtual ICollection<LocalIged> LocalIged { get; set; }
     }
 }

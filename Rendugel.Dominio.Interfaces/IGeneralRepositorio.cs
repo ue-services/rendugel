@@ -1,4 +1,5 @@
 ﻿using Rendugel.Dominio.Entidades.Modelo;
+using Rendugel.Transversal.Entidades;
 using System.Collections.Generic;
 
 namespace Rendugel.Dominio.Interfaces
@@ -14,5 +15,7 @@ namespace Rendugel.Dominio.Interfaces
         IEnumerable<TipoDocumento> ObtenerListaTipoDocumento();
         IEnumerable<Iged> ObtenerListaUgeles();
         IEnumerable<EventoRegistral> ObtenerListaEventoRegistralPorIdNaturaleza(int idNaturalea);
+        
+
     }
 }

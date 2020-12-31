@@ -6,6 +6,7 @@ namespace Rendugel.Dominio.Entidades.Modelo
     public partial class DocumentoSuspension
     {
         public int IdDocumentoSuspension { get; set; }
+        public int? IdRegistro { get; set; }
         public int? IdDocumento { get; set; }
         public int? IdSuspCanc { get; set; }
         public string UsuCreacion { get; set; }
@@ -16,6 +17,7 @@ namespace Rendugel.Dominio.Entidades.Modelo
         public bool? EsBorrado { get; set; }
 
         public virtual Documento IdDocumentoNavigation { get; set; }
+        public virtual Registro IdRegistroNavigation { get; set; }
         public virtual SuspensionCancelación IdSuspCancNavigation { get; set; }
     }
 }

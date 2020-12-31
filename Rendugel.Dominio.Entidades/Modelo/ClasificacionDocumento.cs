@@ -7,6 +7,7 @@ namespace Rendugel.Dominio.Entidades.Modelo
     {
         public ClasificacionDocumento()
         {
+            ClasificacionDocPorTipoSusCan = new HashSet<ClasificacionDocPorTipoSusCan>();
             Documento = new HashSet<Documento>();
         }
 
@@ -16,6 +17,7 @@ namespace Rendugel.Dominio.Entidades.Modelo
         public bool? EsActivo { get; set; }
         public bool? EsBorrado { get; set; }
 
+        public virtual ICollection<ClasificacionDocPorTipoSusCan> ClasificacionDocPorTipoSusCan { get; set; }
         public virtual ICollection<Documento> Documento { get; set; }
     }
 }

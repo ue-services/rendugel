@@ -23,7 +23,7 @@ namespace Rendugel.Dominio.Entidades.Modelo
         public bool? EsBorrado { get; set; }
 
         public virtual Accion IdAccionNavigation { get; set; }
-        public virtual Componente IdComponenteNavigation { get; set; }
+        public virtual ClasificacionDocPorTipoSusCan IdComponenteNavigation { get; set; }
         public virtual EstadoRegistro IdEstadoRegistroNavigation { get; set; }
         public virtual Formulario IdFormularioNavigation { get; set; }
         public virtual Rol IdRolNavigation { get; set; }

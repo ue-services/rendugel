@@ -8,8 +8,7 @@ namespace Rendugel.Dominio.Entidades.Modelo
         public int IdIgedEjecutora { get; set; }
         public int? IdIged { get; set; }
         public int? IdUnidadEjecutora { get; set; }
-        public string PliegoUnidadEjecutora { get; set; }
-        public int? IdIgedRegistro { get; set; }
+        public int? IdRegistro { get; set; }
         public string UsuCreacion { get; set; }
         public DateTime? FechaCreacion { get; set; }
         public string UsuActualizacion { get; set; }

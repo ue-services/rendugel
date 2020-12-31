@@ -8,6 +8,7 @@ namespace Rendugel.Dominio.Entidades.Modelo
         public Ubigeo()
         {
             IgedBasicos = new HashSet<IgedBasicos>();
+            IgedRegistroDetalle = new HashSet<IgedRegistroDetalle>();
             JurisdiccionIged = new HashSet<JurisdiccionIged>();
         }
 
@@ -24,12 +25,14 @@ namespace Rendugel.Dominio.Entidades.Modelo
         public string CodDistrito { get; set; }
         public string NomDistrito { get; set; }
         public int? IdCcpp { get; set; }
+        public string CodCcpp { get; set; }
         public string NomCcpp { get; set; }
         public bool? EsActivo { get; set; }
         public bool? EsBorrado { get; set; }
 
         public virtual TipoUbigeo IdTipoUbigeoNavigation { get; set; }
         public virtual ICollection<IgedBasicos> IgedBasicos { get; set; }
+        public virtual ICollection<IgedRegistroDetalle> IgedRegistroDetalle { get; set; }
         public virtual ICollection<JurisdiccionIged> JurisdiccionIged { get; set; }
     }
 }

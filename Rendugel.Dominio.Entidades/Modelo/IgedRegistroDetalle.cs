@@ -19,6 +19,7 @@ namespace Rendugel.Dominio.Entidades.Modelo
         public int? IdUbigeoIged { get; set; }
         public int? IdTipoIged { get; set; }
         public int? IdDre { get; set; }
+        public string Motivo { get; set; }
         public string UsuCreacion { get; set; }
         public DateTime? FechaCreacion { get; set; }
         public string UsuActualizacion { get; set; }
@@ -29,6 +30,7 @@ namespace Rendugel.Dominio.Entidades.Modelo
         public virtual EventoRegistral IdEventoRegistralNavigation { get; set; }
         public virtual Iged IdIgedNavigation { get; set; }
         public virtual Registro IdRegistroNavigation { get; set; }
+        public virtual Ubigeo IdUbigeoIgedNavigation { get; set; }
         public virtual ICollection<HIged> HIged { get; set; }
     }
 }

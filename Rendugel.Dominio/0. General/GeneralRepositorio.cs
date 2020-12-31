@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Rendugel.Datos.Modelo;
+using Rendugel.Transversal.Entidades;
 
 namespace Rendugel.Dominio
 {
@@ -70,6 +71,6 @@ namespace Rendugel.Dominio
             return items;
         }
 
-        #endregion
+       #endregion
     }
 }

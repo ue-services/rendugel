@@ -17,13 +17,18 @@ namespace Rendugel.Datos.Modelo
         }
 
         public virtual DbSet<Accion> Accion { get; set; }
+        public virtual DbSet<Bandeja> Bandeja { get; set; }
+        public virtual DbSet<BandejaEstadoRegistro> BandejaEstadoRegistro { get; set; }
+        public virtual DbSet<ClasificacionDocPorTipoSusCan> ClasificacionDocPorTipoSusCan { get; set; }
         public virtual DbSet<ClasificacionDocumento> ClasificacionDocumento { get; set; }
-        public virtual DbSet<Componente> Componente { get; set; }
         public virtual DbSet<Configuracion> Configuracion { get; set; }
         public virtual DbSet<DependeciaUnidadEjecutora> DependeciaUnidadEjecutora { get; set; }
+        public virtual DbSet<DependenciaUnidadEjecutora> DependenciaUnidadEjecutora { get; set; }
         public virtual DbSet<Documento> Documento { get; set; }
+        public virtual DbSet<DocumentoDirector> DocumentoDirector { get; set; }
         public virtual DbSet<DocumentoRegistro> DocumentoRegistro { get; set; }
         public virtual DbSet<DocumentoSuspension> DocumentoSuspension { get; set; }
+        public virtual DbSet<DocumentoTem> DocumentoTem { get; set; }
         public virtual DbSet<EstadoIged> EstadoIged { get; set; }
         public virtual DbSet<EstadoRegistro> EstadoRegistro { get; set; }
         public virtual DbSet<EventoRegistral> EventoRegistral { get; set; }
@@ -33,16 +38,17 @@ namespace Rendugel.Datos.Modelo
         public virtual DbSet<HIged> HIged { get; set; }
         public virtual DbSet<Iged> Iged { get; set; }
         public virtual DbSet<IgedBasicos> IgedBasicos { get; set; }
+        public virtual DbSet<IgedMedioContacto> IgedMedioContacto { get; set; }
         public virtual DbSet<IgedRegistroDetalle> IgedRegistroDetalle { get; set; }
-        public virtual DbSet<IgelMedioContacto> IgelMedioContacto { get; set; }
         public virtual DbSet<JurisdiccionIged> JurisdiccionIged { get; set; }
-        public virtual DbSet<LocalIgel> LocalIgel { get; set; }
+        public virtual DbSet<LocalIged> LocalIged { get; set; }
         public virtual DbSet<NaturalezaEvento> NaturalezaEvento { get; set; }
         public virtual DbSet<OrigenSuspencionCancelacion> OrigenSuspencionCancelacion { get; set; }
         public virtual DbSet<Parametro> Parametro { get; set; }
         public virtual DbSet<Persona> Persona { get; set; }
         public virtual DbSet<Personal> Personal { get; set; }
         public virtual DbSet<PersonalMedioContacto> PersonalMedioContacto { get; set; }
+        public virtual DbSet<PliegoUnidadEjecutora> PliegoUnidadEjecutora { get; set; }
         public virtual DbSet<Registro> Registro { get; set; }
         public virtual DbSet<Rol> Rol { get; set; }
         public virtual DbSet<RutaArchivos> RutaArchivos { get; set; }
@@ -56,7 +62,7 @@ namespace Rendugel.Datos.Modelo
         public virtual DbSet<TipoPersonal> TipoPersonal { get; set; }
         public virtual DbSet<TipoPropiedad> TipoPropiedad { get; set; }
         public virtual DbSet<TipoRegistro> TipoRegistro { get; set; }
-        public virtual DbSet<TipoSuspension> TipoSuspension { get; set; }
+        public virtual DbSet<TipoSuspensionCancelacion> TipoSuspensionCancelacion { get; set; }
         public virtual DbSet<TipoUbigeo> TipoUbigeo { get; set; }
         public virtual DbSet<Ubigeo> Ubigeo { get; set; }
         public virtual DbSet<UnidadEjecutora> UnidadEjecutora { get; set; }
@@ -110,6 +116,84 @@ namespace Rendugel.Datos.Modelo
                     .IsUnicode(false);
             });
 
+            modelBuilder.Entity<Bandeja>(entity =>
+            {
+                entity.HasKey(e => e.IdBandeja);
+
+                entity.ToTable("Bandeja", "configuracion");
+
+                entity.Property(e => e.IdBandeja).HasColumnName("Id_Bandeja");
+
+                entity.Property(e => e.CodBandeja).HasColumnName("Cod_Bandeja");
+
+                entity.Property(e => e.Descripcion)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.EsActivo).HasColumnName("Es_Activo");
+
+                entity.Property(e => e.EsBorrado).HasColumnName("Es_Borrado");
+            });
+
+            modelBuilder.Entity<BandejaEstadoRegistro>(entity =>
+            {
+                entity.HasKey(e => e.IdBandejaRegistro);
+
+                entity.ToTable("Bandeja_EstadoRegistro", "configuracion");
+
+                entity.Property(e => e.IdBandejaRegistro).HasColumnName("Id_BandejaRegistro");
+
+                entity.Property(e => e.CodBandejaRegistro).HasColumnName("Cod_Bandeja_Registro");
+
+                entity.Property(e => e.EsActivo).HasColumnName("Es_Activo");
+
+                entity.Property(e => e.EsBorrado).HasColumnName("Es_Borrado");
+
+                entity.Property(e => e.IdBandeja).HasColumnName("Id_Bandeja");
+
+                entity.Property(e => e.IdEstadoRegistro).HasColumnName("Id_Estado_Registro");
+
+                entity.HasOne(d => d.IdBandejaNavigation)
+                    .WithMany(p => p.BandejaEstadoRegistro)
+                    .HasForeignKey(d => d.IdBandeja)
+                    .HasConstraintName("FK_Bandeja_EstadoRegistro_Bandeja");
+
+                entity.HasOne(d => d.IdEstadoRegistroNavigation)
+                    .WithMany(p => p.BandejaEstadoRegistro)
+                    .HasForeignKey(d => d.IdEstadoRegistro)
+                    .HasConstraintName("FK_Bandeja_EstadoRegistro_Estado_Registro");
+            });
+
+            modelBuilder.Entity<ClasificacionDocPorTipoSusCan>(entity =>
+            {
+                entity.HasKey(e => e.IdConfigTipo)
+                    .HasName("PK_Componente");
+
+                entity.ToTable("ClasificacionDocPorTipoSusCan", "configuracion");
+
+                entity.Property(e => e.IdConfigTipo).HasColumnName("Id_ConfigTipo");
+
+                entity.Property(e => e.CodConfigTipo).HasColumnName("Cod_ConfigTipo");
+
+                entity.Property(e => e.EsActivo).HasColumnName("Es_Activo");
+
+                entity.Property(e => e.EsBorrado).HasColumnName("Es_Borrado");
+
+                entity.Property(e => e.IdClasificacionDoc).HasColumnName("Id_Clasificacion_Doc");
+
+                entity.Property(e => e.IdTipoSuspCanc).HasColumnName("Id_Tipo_Susp_Canc");
+
+                entity.HasOne(d => d.IdClasificacionDocNavigation)
+                    .WithMany(p => p.ClasificacionDocPorTipoSusCan)
+                    .HasForeignKey(d => d.IdClasificacionDoc)
+                    .HasConstraintName("FK_ClasificacionDocPorTipoSusCan_Clasificacion_Documento");
+
+                entity.HasOne(d => d.IdTipoSuspCancNavigation)
+                    .WithMany(p => p.ClasificacionDocPorTipoSusCan)
+                    .HasForeignKey(d => d.IdTipoSuspCanc)
+                    .HasConstraintName("FK_ClasificacionDocPorTipoSusCan_Tipo_Suspension_Cancelacion");
+            });
+
             modelBuilder.Entity<ClasificacionDocumento>(entity =>
             {
                 entity.HasKey(e => e.IdClasificacionDoc);
@@ -128,44 +212,6 @@ namespace Rendugel.Datos.Modelo
                 entity.Property(e => e.EsActivo).HasColumnName("Es_Activo");
 
                 entity.Property(e => e.EsBorrado).HasColumnName("Es_Borrado");
-            });
-
-            modelBuilder.Entity<Componente>(entity =>
-            {
-                entity.HasKey(e => e.IdComponente);
-
-                entity.ToTable("Componente", "configuracion");
-
-                entity.Property(e => e.IdComponente).HasColumnName("Id_Componente");
-
-                entity.Property(e => e.CodComponente).HasColumnName("Cod_Componente");
-
-                entity.Property(e => e.DescComponente)
-                    .HasColumnName("Desc_Componente")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.EsActivo).HasColumnName("Es_Activo");
-
-                entity.Property(e => e.EsBorrado).HasColumnName("Es_Borrado");
-
-                entity.Property(e => e.FechaActualizacion)
-                    .HasColumnName("Fecha_Actualizacion")
-                    .HasColumnType("datetime");
-
-                entity.Property(e => e.FechaCreacion)
-                    .HasColumnName("Fecha_Creacion")
-                    .HasColumnType("datetime");
-
-                entity.Property(e => e.UsuActualizacion)
-                    .HasColumnName("Usu_Actualizacion")
-                    .HasMaxLength(15)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UsuCreacion)
-                    .HasColumnName("Usu_Creacion")
-                    .HasMaxLength(15)
-                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Configuracion>(entity =>
@@ -269,14 +315,9 @@ namespace Rendugel.Datos.Modelo
 
                 entity.Property(e => e.IdIged).HasColumnName("Id_IGED");
 
-                entity.Property(e => e.IdIgedRegistro).HasColumnName("Id_IGED_Registro");
+                entity.Property(e => e.IdRegistro).HasColumnName("Id_Registro");
 
                 entity.Property(e => e.IdUnidadEjecutora).HasColumnName("Id_Unidad_Ejecutora");
-
-                entity.Property(e => e.PliegoUnidadEjecutora)
-                    .HasColumnName("Pliego_Unidad_Ejecutora")
-                    .HasMaxLength(15)
-                    .IsUnicode(false);
 
                 entity.Property(e => e.UsuActualizacion)
                     .HasColumnName("Usu_Actualizacion")
@@ -296,7 +337,44 @@ namespace Rendugel.Datos.Modelo
                 entity.HasOne(d => d.IdUnidadEjecutoraNavigation)
                     .WithMany(p => p.DependeciaUnidadEjecutora)
                     .HasForeignKey(d => d.IdUnidadEjecutora)
-                    .HasConstraintName("FK_Dependecia_Unidad_Ejecutora_Unidad_Ejecutora");
+                    .HasConstraintName("FK_Dependecia_Unidad_Ejecutora_Unidad_Ejecutora1");
+            });
+
+            modelBuilder.Entity<DependenciaUnidadEjecutora>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("Dependencia_Unidad_Ejecutora", "ficha");
+
+                entity.Property(e => e.EsActivo).HasColumnName("Es_Activo");
+
+                entity.Property(e => e.EsBorrado).HasColumnName("Es_Borrado");
+
+                entity.Property(e => e.FechaActualizacion)
+                    .HasColumnName("Fecha_Actualizacion")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.FechaCreacion)
+                    .HasColumnName("Fecha_Creacion")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.IdIged).HasColumnName("Id_IGED");
+
+                entity.Property(e => e.IdIgedEjecutora).HasColumnName("Id_IGED_Ejecutora");
+
+                entity.Property(e => e.IdIgedRegistro).HasColumnName("Id_IGED_Registro");
+
+                entity.Property(e => e.IdUnidadEjecutora).HasColumnName("Id_Unidad_Ejecutora");
+
+                entity.Property(e => e.UsuActualizacion)
+                    .HasColumnName("Usu_Actualizacion")
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UsuCreacion)
+                    .HasColumnName("Usu_Creacion")
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Documento>(entity =>
@@ -329,8 +407,6 @@ namespace Rendugel.Datos.Modelo
 
                 entity.Property(e => e.IdClasificacionDoc).HasColumnName("Id_Clasificacion_Doc");
 
-                entity.Property(e => e.IdRuta).HasColumnName("Id_Ruta");
-
                 entity.Property(e => e.IdTipoDoc).HasColumnName("Id_Tipo_Doc");
 
                 entity.Property(e => e.NombreArchivo)
@@ -341,6 +417,10 @@ namespace Rendugel.Datos.Modelo
                 entity.Property(e => e.NroDocumento)
                     .HasColumnName("Nro_Documento")
                     .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Ruta)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.UsuActualizacion)
@@ -358,15 +438,55 @@ namespace Rendugel.Datos.Modelo
                     .HasForeignKey(d => d.IdClasificacionDoc)
                     .HasConstraintName("FK_Documento_Clasificacion_Documento");
 
-                entity.HasOne(d => d.IdRutaNavigation)
-                    .WithMany(p => p.Documento)
-                    .HasForeignKey(d => d.IdRuta)
-                    .HasConstraintName("FK_Documento_Ruta_Archivos");
-
                 entity.HasOne(d => d.IdTipoDocNavigation)
                     .WithMany(p => p.Documento)
                     .HasForeignKey(d => d.IdTipoDoc)
                     .HasConstraintName("FK_Documento_Tipo_Documento");
+            });
+
+            modelBuilder.Entity<DocumentoDirector>(entity =>
+            {
+                entity.HasKey(e => e.IdDocumentoDirector);
+
+                entity.ToTable("Documento_Director", "ficha");
+
+                entity.Property(e => e.IdDocumentoDirector).HasColumnName("Id_Documento_Director");
+
+                entity.Property(e => e.EsActivo).HasColumnName("Es_Activo");
+
+                entity.Property(e => e.EsBorrado).HasColumnName("Es_Borrado");
+
+                entity.Property(e => e.FechaActualizacion)
+                    .HasColumnName("Fecha_Actualizacion")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.FechaCreacion)
+                    .HasColumnName("Fecha_Creacion")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.IdDocumento).HasColumnName("Id_Documento");
+
+                entity.Property(e => e.IdPersonal).HasColumnName("Id_Personal");
+
+                entity.Property(e => e.UsuActualizacion)
+                    .HasColumnName("Usu_Actualizacion")
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UsuCreacion)
+                    .HasColumnName("Usu_Creacion")
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.IdDocumentoNavigation)
+                    .WithMany(p => p.DocumentoDirector)
+                    .HasForeignKey(d => d.IdDocumento)
+                    .HasConstraintName("FK_Documento_Director_Documento");
+
+                entity.HasOne(d => d.IdPersonalNavigation)
+                    .WithMany(p => p.DocumentoDirector)
+                    .HasForeignKey(d => d.IdPersonal)
+                    .HasConstraintName("FK_Documento_Director_Personal");
             });
 
             modelBuilder.Entity<DocumentoRegistro>(entity =>
@@ -436,6 +556,8 @@ namespace Rendugel.Datos.Modelo
 
                 entity.Property(e => e.IdDocumento).HasColumnName("Id_Documento");
 
+                entity.Property(e => e.IdRegistro).HasColumnName("Id_Registro");
+
                 entity.Property(e => e.IdSuspCanc).HasColumnName("Id_Susp_Canc");
 
                 entity.Property(e => e.UsuActualizacion)
@@ -453,10 +575,59 @@ namespace Rendugel.Datos.Modelo
                     .HasForeignKey(d => d.IdDocumento)
                     .HasConstraintName("FK_Documento_Suspension_Documento");
 
+                entity.HasOne(d => d.IdRegistroNavigation)
+                    .WithMany(p => p.DocumentoSuspension)
+                    .HasForeignKey(d => d.IdRegistro)
+                    .HasConstraintName("FK_Documento_Suspension_Registro");
+
                 entity.HasOne(d => d.IdSuspCancNavigation)
                     .WithMany(p => p.DocumentoSuspension)
                     .HasForeignKey(d => d.IdSuspCanc)
                     .HasConstraintName("FK_Documento_Suspension_Suspension_Cancelación");
+            });
+
+            modelBuilder.Entity<DocumentoTem>(entity =>
+            {
+                entity.HasKey(e => e.IdDocumentoTem);
+
+                entity.ToTable("Documento_Tem", "transaccional");
+
+                entity.Property(e => e.IdDocumentoTem).HasColumnName("Id_Documento_Tem");
+
+                entity.Property(e => e.EsActivo).HasColumnName("Es_Activo");
+
+                entity.Property(e => e.EsBorrado).HasColumnName("Es_Borrado");
+
+                entity.Property(e => e.FechaActualizacion)
+                    .HasColumnName("Fecha_Actualizacion")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.FechaCreacion)
+                    .HasColumnName("Fecha_Creacion")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.Finalidad)
+                    .HasMaxLength(25)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.NombreArchivo)
+                    .HasColumnName("Nombre_Archivo")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Ruta)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UsuActualizacion)
+                    .HasColumnName("Usu_Actualizacion")
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UsuCreacion)
+                    .HasColumnName("Usu_Creacion")
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<EstadoIged>(entity =>
@@ -538,19 +709,26 @@ namespace Rendugel.Datos.Modelo
 
                 entity.Property(e => e.EsBorrado).HasColumnName("Es_Borrado");
 
-                entity.Property(e => e.IdEventoRegistral).HasColumnName("Id_Evento_Registral");
+                entity.Property(e => e.IdNaturaleza).HasColumnName("Id_Naturaleza");
 
                 entity.Property(e => e.IdTipoIged).HasColumnName("Id_Tipo_IGED");
 
-                entity.HasOne(d => d.IdEventoRegistralNavigation)
+                entity.Property(e => e.IdTipoRegistro).HasColumnName("Id_Tipo_Registro");
+
+                entity.HasOne(d => d.IdNaturalezaNavigation)
                     .WithMany(p => p.EventoXTipoIged)
-                    .HasForeignKey(d => d.IdEventoRegistral)
-                    .HasConstraintName("FK_Evento_xTipo_IGED_Evento_Registral");
+                    .HasForeignKey(d => d.IdNaturaleza)
+                    .HasConstraintName("FK_Evento_xTipo_IGED_Naturaleza_Evento");
 
                 entity.HasOne(d => d.IdTipoIgedNavigation)
                     .WithMany(p => p.EventoXTipoIged)
                     .HasForeignKey(d => d.IdTipoIged)
                     .HasConstraintName("FK_Evento_xTipo_IGED_Tipo_IGED");
+
+                entity.HasOne(d => d.IdTipoRegistroNavigation)
+                    .WithMany(p => p.EventoXTipoIged)
+                    .HasForeignKey(d => d.IdTipoRegistro)
+                    .HasConstraintName("FK_Evento_xTipo_IGED_Tipo_Registro");
             });
 
             modelBuilder.Entity<EventosDesencadenados>(entity =>
@@ -787,9 +965,11 @@ namespace Rendugel.Datos.Modelo
 
                 entity.Property(e => e.IdIged).HasColumnName("Id_IGED");
 
-                entity.Property(e => e.IdIgedRegistro).HasColumnName("Id_IGED_Registro");
+                entity.Property(e => e.IdRegistro).HasColumnName("Id_Registro");
 
                 entity.Property(e => e.IdUbigeo).HasColumnName("Id_Ubigeo");
+
+                entity.Property(e => e.IdUnidadEjecutora).HasColumnName("Id_Unidad_Ejecutora");
 
                 entity.Property(e => e.NomIged)
                     .HasColumnName("Nom_IGED")
@@ -820,6 +1000,65 @@ namespace Rendugel.Datos.Modelo
                     .WithMany(p => p.IgedBasicos)
                     .HasForeignKey(d => d.IdUbigeo)
                     .HasConstraintName("FK_IGED_BASICOS_Ubigeo");
+
+                entity.HasOne(d => d.IdUnidadEjecutoraNavigation)
+                    .WithMany(p => p.IgedBasicos)
+                    .HasForeignKey(d => d.IdUnidadEjecutora)
+                    .HasConstraintName("FK_IGED_BASICOS_Unidad_Ejecutora");
+            });
+
+            modelBuilder.Entity<IgedMedioContacto>(entity =>
+            {
+                entity.HasKey(e => e.IdMedioContactoIged)
+                    .HasName("PK_IGEL_Medio_Contacto");
+
+                entity.ToTable("IGED_Medio_Contacto", "ficha");
+
+                entity.Property(e => e.IdMedioContactoIged).HasColumnName("Id_Medio_Contacto_IGED");
+
+                entity.Property(e => e.Descripcion)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.EsActivo).HasColumnName("Es_Activo");
+
+                entity.Property(e => e.EsBorrado).HasColumnName("Es_Borrado");
+
+                entity.Property(e => e.FechaActualizacion)
+                    .HasColumnName("Fecha_Actualizacion")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.FechaCreacion)
+                    .HasColumnName("Fecha_Creacion")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.IdIged).HasColumnName("Id_IGED");
+
+                entity.Property(e => e.IdTipoMedioContacto).HasColumnName("Id_Tipo_Medio_Contacto");
+
+                entity.Property(e => e.Medio)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UsuActualizacion)
+                    .HasColumnName("Usu_Actualizacion")
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UsuCreacion)
+                    .HasColumnName("Usu_Creacion")
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.IdIgedNavigation)
+                    .WithMany(p => p.IgedMedioContacto)
+                    .HasForeignKey(d => d.IdIged)
+                    .HasConstraintName("FK_IGEL_Medio_Contacto_IGED");
+
+                entity.HasOne(d => d.IdTipoMedioContactoNavigation)
+                    .WithMany(p => p.IgedMedioContacto)
+                    .HasForeignKey(d => d.IdTipoMedioContacto)
+                    .HasConstraintName("FK_IGEL_Medio_Contacto_Tipo_Medio_Contacto");
             });
 
             modelBuilder.Entity<IgedRegistroDetalle>(entity =>
@@ -856,6 +1095,8 @@ namespace Rendugel.Datos.Modelo
 
                 entity.Property(e => e.IdUbigeoIged).HasColumnName("Id_Ubigeo_IGED");
 
+                entity.Property(e => e.Motivo).HasColumnType("text");
+
                 entity.Property(e => e.NomIged)
                     .HasColumnName("Nom_IGED")
                     .HasMaxLength(50)
@@ -885,57 +1126,11 @@ namespace Rendugel.Datos.Modelo
                     .WithMany(p => p.IgedRegistroDetalle)
                     .HasForeignKey(d => d.IdRegistro)
                     .HasConstraintName("FK_IGED_Registro_Detalle_Registro");
-            });
 
-            modelBuilder.Entity<IgelMedioContacto>(entity =>
-            {
-                entity.HasKey(e => e.IdMedioContactoIged);
-
-                entity.ToTable("IGEL_Medio_Contacto", "ficha");
-
-                entity.Property(e => e.IdMedioContactoIged).HasColumnName("Id_Medio_Contacto_IGED");
-
-                entity.Property(e => e.EsActivo).HasColumnName("Es_Activo");
-
-                entity.Property(e => e.EsBorrado).HasColumnName("Es_Borrado");
-
-                entity.Property(e => e.FechaActualizacion)
-                    .HasColumnName("Fecha_Actualizacion")
-                    .HasColumnType("datetime");
-
-                entity.Property(e => e.FechaCreacion)
-                    .HasColumnName("Fecha_Creacion")
-                    .HasColumnType("datetime");
-
-                entity.Property(e => e.IdIged).HasColumnName("Id_IGED");
-
-                entity.Property(e => e.IdIgedRegistro).HasColumnName("Id_IGED_Registro");
-
-                entity.Property(e => e.IdTipoMedioContacto).HasColumnName("Id_Tipo_Medio_Contacto");
-
-                entity.Property(e => e.Medio)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UsuActualizacion)
-                    .HasColumnName("Usu_Actualizacion")
-                    .HasMaxLength(15)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.UsuCreacion)
-                    .HasColumnName("Usu_Creacion")
-                    .HasMaxLength(15)
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.IdIgedNavigation)
-                    .WithMany(p => p.IgelMedioContacto)
-                    .HasForeignKey(d => d.IdIged)
-                    .HasConstraintName("FK_IGEL_Medio_Contacto_IGED");
-
-                entity.HasOne(d => d.IdTipoMedioContactoNavigation)
-                    .WithMany(p => p.IgelMedioContacto)
-                    .HasForeignKey(d => d.IdTipoMedioContacto)
-                    .HasConstraintName("FK_IGEL_Medio_Contacto_Tipo_Medio_Contacto");
+                entity.HasOne(d => d.IdUbigeoIgedNavigation)
+                    .WithMany(p => p.IgedRegistroDetalle)
+                    .HasForeignKey(d => d.IdUbigeoIged)
+                    .HasConstraintName("FK_IGED_Registro_Detalle_Ubigeo");
             });
 
             modelBuilder.Entity<JurisdiccionIged>(entity =>
@@ -960,7 +1155,7 @@ namespace Rendugel.Datos.Modelo
 
                 entity.Property(e => e.IdIged).HasColumnName("Id_IGED");
 
-                entity.Property(e => e.IdIgedRegistro).HasColumnName("Id_IGED_Registro");
+                entity.Property(e => e.IdRegistro).HasColumnName("Id_Registro");
 
                 entity.Property(e => e.IdTerminoCantidad).HasColumnName("Id_Termino_Cantidad");
 
@@ -999,11 +1194,12 @@ namespace Rendugel.Datos.Modelo
                     .HasConstraintName("FK_Jurisdiccion_IGED_Ubigeo");
             });
 
-            modelBuilder.Entity<LocalIgel>(entity =>
+            modelBuilder.Entity<LocalIged>(entity =>
             {
-                entity.HasKey(e => e.IdLocalIged);
+                entity.HasKey(e => e.IdLocalIged)
+                    .HasName("PK_Local_IGEL");
 
-                entity.ToTable("Local_IGEL", "ficha");
+                entity.ToTable("Local_IGED", "ficha");
 
                 entity.Property(e => e.IdLocalIged).HasColumnName("Id_Local_IGED");
 
@@ -1026,7 +1222,7 @@ namespace Rendugel.Datos.Modelo
 
                 entity.Property(e => e.IdIged).HasColumnName("Id_IGED");
 
-                entity.Property(e => e.IdIgedRegistro).HasColumnName("Id_IGED_Registro");
+                entity.Property(e => e.IdRegistro).HasColumnName("Id_Registro");
 
                 entity.Property(e => e.IdTipoLocal).HasColumnName("Id_Tipo_Local");
 
@@ -1043,17 +1239,17 @@ namespace Rendugel.Datos.Modelo
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.IdIgedNavigation)
-                    .WithMany(p => p.LocalIgel)
+                    .WithMany(p => p.LocalIged)
                     .HasForeignKey(d => d.IdIged)
                     .HasConstraintName("FK_Local_IGEL_IGED");
 
                 entity.HasOne(d => d.IdTipoLocalNavigation)
-                    .WithMany(p => p.LocalIgel)
+                    .WithMany(p => p.LocalIged)
                     .HasForeignKey(d => d.IdTipoLocal)
                     .HasConstraintName("FK_Local_IGEL_Tipo_Local");
 
                 entity.HasOne(d => d.IdTipoPropiedadNavigation)
-                    .WithMany(p => p.LocalIgel)
+                    .WithMany(p => p.LocalIged)
                     .HasForeignKey(d => d.IdTipoPropiedad)
                     .HasConstraintName("FK_Local_IGEL_Tipo_Propiedad");
             });
@@ -1082,7 +1278,8 @@ namespace Rendugel.Datos.Modelo
 
             modelBuilder.Entity<OrigenSuspencionCancelacion>(entity =>
             {
-                entity.HasKey(e => e.IdOrigenSuspCanc);
+                entity.HasKey(e => e.IdOrigenSuspCanc)
+                    .HasName("PK_Origen_Suspencion_Cancelacion_1");
 
                 entity.ToTable("Origen_Suspencion_Cancelacion", "maestra");
 
@@ -1090,21 +1287,13 @@ namespace Rendugel.Datos.Modelo
 
                 entity.Property(e => e.CodTipoSuspCanc).HasColumnName("Cod_Tipo_Susp_Canc");
 
-                entity.Property(e => e.DescTipoSuspCanc)
-                    .HasColumnName("Desc_Tipo_Susp_Canc")
+                entity.Property(e => e.Descripcion)
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.EsActivo).HasColumnName("Es_Activo");
 
-                entity.Property(e => e.EsBorrado).HasColumnName("Es_borrado");
-
-                entity.Property(e => e.IdTipoSuspension).HasColumnName("Id_Tipo_Suspension");
-
-                entity.HasOne(d => d.IdTipoSuspensionNavigation)
-                    .WithMany(p => p.OrigenSuspencionCancelacion)
-                    .HasForeignKey(d => d.IdTipoSuspension)
-                    .HasConstraintName("FK_Origen_Suspencion_Cancelacion_Tipo_Suspension");
+                entity.Property(e => e.EsBorrado).HasColumnName("Es_Borrado");
             });
 
             modelBuilder.Entity<Parametro>(entity =>
@@ -1213,9 +1402,9 @@ namespace Rendugel.Datos.Modelo
 
                 entity.Property(e => e.IdIged).HasColumnName("Id_IGED");
 
-                entity.Property(e => e.IdIgedRegistro).HasColumnName("Id_IGED_Registro");
-
                 entity.Property(e => e.IdPersona).HasColumnName("Id_Persona");
+
+                entity.Property(e => e.IdRegistro).HasColumnName("Id_Registro");
 
                 entity.Property(e => e.IdTipoPersonal).HasColumnName("Id_Tipo_Personal");
 
@@ -1269,9 +1458,9 @@ namespace Rendugel.Datos.Modelo
                     .HasColumnName("Fecha_Creacion")
                     .HasColumnType("datetime");
 
-                entity.Property(e => e.IdIgedRegistro).HasColumnName("Id_IGED_Registro");
-
                 entity.Property(e => e.IdPersonal).HasColumnName("Id_Personal");
+
+                entity.Property(e => e.IdRegistro).HasColumnName("Id_Registro");
 
                 entity.Property(e => e.IdTipoMedioContacto).HasColumnName("Id_Tipo_Medio_Contacto");
 
@@ -1298,6 +1487,29 @@ namespace Rendugel.Datos.Modelo
                     .WithMany(p => p.PersonalMedioContacto)
                     .HasForeignKey(d => d.IdTipoMedioContacto)
                     .HasConstraintName("FK_Personal_Medio_Contacto_Tipo_Medio_Contacto");
+            });
+
+            modelBuilder.Entity<PliegoUnidadEjecutora>(entity =>
+            {
+                entity.HasKey(e => e.IdPliegoUnidadEjecutora);
+
+                entity.ToTable("Pliego_Unidad_Ejecutora", "maestra");
+
+                entity.Property(e => e.IdPliegoUnidadEjecutora).HasColumnName("Id_Pliego_Unidad_Ejecutora");
+
+                entity.Property(e => e.CodPliegoUnidadEjecutora)
+                    .HasColumnName("Cod_Pliego_Unidad_Ejecutora")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.DescPliegoUnidadEjecutora)
+                    .HasColumnName("Desc_Pliego_Unidad_Ejecutora")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.EsActivo).HasColumnName("Es_Activo");
+
+                entity.Property(e => e.EsBorrado).HasColumnName("Es_Borrado");
             });
 
             modelBuilder.Entity<Registro>(entity =>
@@ -1336,8 +1548,6 @@ namespace Rendugel.Datos.Modelo
                 entity.Property(e => e.FechaCreacion)
                     .HasColumnName("Fecha_Creacion")
                     .HasColumnType("datetime");
-
-                entity.Property(e => e.IdDocResolutivo).HasColumnName("Id_Doc_Resolutivo");
 
                 entity.Property(e => e.IdEstadoRegistro).HasColumnName("Id_Estado_registro");
 
@@ -1454,6 +1664,8 @@ namespace Rendugel.Datos.Modelo
 
                 entity.Property(e => e.IdRegistro).HasColumnName("Id_Registro");
 
+                entity.Property(e => e.IdTipoSuspCanc).HasColumnName("Id_Tipo_Susp_Canc");
+
                 entity.Property(e => e.MotivoSuspension)
                     .HasColumnName("Motivo_Suspension")
                     .HasColumnType("text");
@@ -1471,13 +1683,18 @@ namespace Rendugel.Datos.Modelo
                 entity.HasOne(d => d.IdOrigenSuspCancNavigation)
                     .WithMany(p => p.SuspensionCancelación)
                     .HasForeignKey(d => d.IdOrigenSuspCanc)
-                    .HasConstraintName("FK_Suspension_Cancelación_Origen_Suspencion_Cancelacion1");
+                    .HasConstraintName("FK_Suspension_Cancelación_Origen_Suspencion_Cancelacion");
 
                 entity.HasOne(d => d.IdRegistroNavigation)
                     .WithMany(p => p.SuspensionCancelación)
                     .HasForeignKey(d => d.IdRegistro)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Suspension_Cancelación_Registro");
+
+                entity.HasOne(d => d.IdTipoSuspCancNavigation)
+                    .WithMany(p => p.SuspensionCancelación)
+                    .HasForeignKey(d => d.IdTipoSuspCanc)
+                    .HasConstraintName("FK_Suspension_Cancelación_Tipo_Suspension_Cancelacion");
             });
 
             modelBuilder.Entity<TerminoCantidadJurisdiccion>(entity =>
@@ -1588,10 +1805,10 @@ namespace Rendugel.Datos.Modelo
 
                 entity.Property(e => e.IdTipoMedioContacto).HasColumnName("Id_Tipo_Medio_Contacto");
 
-                entity.Property(e => e.CodTipoTelefono).HasColumnName("Cod_Tipo_Telefono");
+                entity.Property(e => e.CodTipoMedio).HasColumnName("Cod_Tipo_Medio");
 
-                entity.Property(e => e.DescTipoTelefono)
-                    .HasColumnName("Desc_Tipo_Telefono")
+                entity.Property(e => e.DescTipoMedio)
+                    .HasColumnName("Desc_Tipo_Medio")
                     .HasMaxLength(12)
                     .IsUnicode(false);
 
@@ -1602,11 +1819,11 @@ namespace Rendugel.Datos.Modelo
 
             modelBuilder.Entity<TipoPersonal>(entity =>
             {
-                entity.HasKey(e => e.IdTipoPersoanal);
+                entity.HasKey(e => e.IdTipoPersonal);
 
                 entity.ToTable("Tipo_Personal", "maestra");
 
-                entity.Property(e => e.IdTipoPersoanal).HasColumnName("Id_Tipo_Persoanal");
+                entity.Property(e => e.IdTipoPersonal).HasColumnName("Id_Tipo_Personal");
 
                 entity.Property(e => e.CodTipoPersonal).HasColumnName("Cod_Tipo_Personal");
 
@@ -1667,18 +1884,19 @@ namespace Rendugel.Datos.Modelo
                 entity.Property(e => e.EsBorrado).HasColumnName("Es_Borrado");
             });
 
-            modelBuilder.Entity<TipoSuspension>(entity =>
+            modelBuilder.Entity<TipoSuspensionCancelacion>(entity =>
             {
-                entity.HasKey(e => e.IdTipoSuspension);
+                entity.HasKey(e => e.IdTipoSuspCanc)
+                    .HasName("PK_Tipo_Suspension");
 
-                entity.ToTable("Tipo_Suspension", "maestra");
+                entity.ToTable("Tipo_Suspension_Cancelacion", "maestra");
 
-                entity.Property(e => e.IdTipoSuspension).HasColumnName("Id_Tipo_Suspension");
+                entity.Property(e => e.IdTipoSuspCanc).HasColumnName("Id_Tipo_Susp_Canc");
 
-                entity.Property(e => e.CodTipoSuspension).HasColumnName("Cod_Tipo_Suspension");
+                entity.Property(e => e.CodTipoSuspCanc).HasColumnName("Cod_Tipo_Susp_Canc");
 
-                entity.Property(e => e.DescTipoSuspension)
-                    .HasColumnName("Desc_Tipo_Suspension")
+                entity.Property(e => e.DescTipoSuspCanc)
+                    .HasColumnName("Desc_Tipo_Susp_Canc")
                     .HasMaxLength(150)
                     .IsUnicode(false);
 
@@ -1715,6 +1933,11 @@ namespace Rendugel.Datos.Modelo
 
                 entity.Property(e => e.IdUbigeo).HasColumnName("Id_Ubigeo");
 
+                entity.Property(e => e.CodCcpp)
+                    .HasColumnName("Cod_CCPP")
+                    .HasMaxLength(4)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.CodDistrito)
                     .HasColumnName("Cod_Distrito")
                     .HasMaxLength(6)
@@ -1732,7 +1955,7 @@ namespace Rendugel.Datos.Modelo
 
                 entity.Property(e => e.CodUbigeo)
                     .HasColumnName("Cod_Ubigeo")
-                    .HasMaxLength(6)
+                    .HasMaxLength(10)
                     .IsUnicode(false);
 
                 entity.Property(e => e.EsActivo).HasColumnName("Es_Activo");
@@ -1783,7 +2006,10 @@ namespace Rendugel.Datos.Modelo
 
                 entity.Property(e => e.IdUnidadEjecutora).HasColumnName("Id_Unidad_Ejecutora");
 
-                entity.Property(e => e.CodUnidadEjecutora).HasColumnName("Cod_Unidad_Ejecutora");
+                entity.Property(e => e.CodUnidadEjecutora)
+                    .HasColumnName("Cod_Unidad_Ejecutora")
+                    .HasMaxLength(8)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.DescUnidadEjecutora)
                     .HasColumnName("Desc_Unidad_Ejecutora")
@@ -1793,6 +2019,31 @@ namespace Rendugel.Datos.Modelo
                 entity.Property(e => e.EsActivo).HasColumnName("Es_Activo");
 
                 entity.Property(e => e.EsBorrado).HasColumnName("Es_Borrado");
+
+                entity.Property(e => e.FechaActualizacion)
+                    .HasColumnName("Fecha_Actualizacion")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.FechaCreacion)
+                    .HasColumnName("Fecha_Creacion")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.IdPliegoUnidadEjecutora).HasColumnName("Id_Pliego_Unidad_Ejecutora");
+
+                entity.Property(e => e.UsuActualizacion)
+                    .HasColumnName("Usu_Actualizacion")
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UsuCreacion)
+                    .HasColumnName("Usu_Creacion")
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.IdPliegoUnidadEjecutoraNavigation)
+                    .WithMany(p => p.UnidadEjecutora)
+                    .HasForeignKey(d => d.IdPliegoUnidadEjecutora)
+                    .HasConstraintName("FK_Unidad_Ejecutora_Pliego_Unidad_Ejecutora");
             });
 
             OnModelCreatingPartial(modelBuilder);

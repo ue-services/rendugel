@@ -3,12 +3,17 @@ using Rendugel.Dominio.Entidades.Modelo;
 using Rendugel.Servicios.Contratos.Registro;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 
 namespace Rendugel.Servicios.Servicio.Registro
 {
     public class ListasServicio: IListasServicio
     {
         readonly ListasAplicacion listasAplicacion = new ListasAplicacion();
+
+        //public static void Configure(ServiceConfiguration config)
+        //{
+        //}
         public IEnumerable<TipoIged> ObtenerListaTipoIgedSP()
         {
             var items = listasAplicacion.ObtenerListaTipoIgedSP();
@@ -37,7 +42,7 @@ namespace Rendugel.Servicios.Servicio.Registro
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<EventoRegistral> ObtenerListaEventoRegistralEF()
+        public IEnumerable<EventoRegistral> ObtenerListaEventoRegistralEF() 
         {
             var items = listasAplicacion.ObtenerListaEventoRegistralEF();
             return items;
